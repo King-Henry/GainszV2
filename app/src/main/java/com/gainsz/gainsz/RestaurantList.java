@@ -1,6 +1,5 @@
 package com.gainsz.gainsz;
 
-import android.support.v4.widget.SearchViewCompatIcs;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,16 +32,26 @@ public class RestaurantList extends AppCompatActivity {
     public static class ViewAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
 
-        
+        ArrayList<Restaurant> restaurants;
+
         public ViewAdapter(){
 
+            restaurants = new ArrayList<Restaurant>();
+            String[] strings = {"McDonald's", "Chick-Fil-a"};
+            int[] icons = {R.mipmap.mcdonalds,R.mipmap.chickfila};
+            for(int i = 0; i < icons.length; i++){ 
 
+                Restaurant restaurant = new Restaurant();
+                restaurant.title = strings[i];
+                restaurant.iconID = icons[i];
+                restaurants.add(restaurant);
+            }
         }
 
         @Override
         public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-            ArrayList<Restaurants> restaurants = new ArrayList<Restaurants>();
+
 
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.content_view,parent,false);
@@ -54,14 +63,15 @@ public class RestaurantList extends AppCompatActivity {
         @Override
         public void onBindViewHolder(MyViewHolder holder, int position) {
 
-            Restaurant restaurant = restaurants.get(postion);
-            holder.restaurantTitle = restaurants
+            Restaurant restaurant = restaurants.get(position);
+            holder.restaurantTitle.setText(restaurant.title);
+            holder.restaurantLogo.setImageResource(restaurant.iconID);
 
         }
 
         @Override
         public int getItemCount() {
-            return 0;
+            return restaurants.size();
         }
     }
 
@@ -76,7 +86,7 @@ public class RestaurantList extends AppCompatActivity {
             super(myView);
             cardView = (CardView)myView.findViewById(R.id.card_view);
             restaurantTitle = (TextView)myView.findViewById(R.id.text_view);
-            restaurantLogo = (ImageView)myView.findViewById(R.id.image_view)
+            restaurantLogo = (ImageView)myView.findViewById(R.id.image_view);
         }
 
     }

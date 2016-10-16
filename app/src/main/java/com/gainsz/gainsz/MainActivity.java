@@ -1,6 +1,7 @@
 package com.gainsz.gainsz;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -47,7 +48,8 @@ public class MainActivity extends AppCompatActivity{
                 String stringTotal = dollars.getText().toString() + "." + cents.getText().toString();
                 double doubleTotal = Double.parseDouble(stringTotal);
                 Log.d("Double Total", String.format("%f" ,doubleTotal));
-
+                Intent intent = new Intent(MainActivity.this, RestaurantList.class);
+                startActivity(intent);
 
 
 
