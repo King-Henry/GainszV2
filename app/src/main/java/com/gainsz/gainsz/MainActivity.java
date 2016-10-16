@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     @Override
     protected void onStart() {
+        button.setEnabled(true);
         googleApiClient.connect();
         super.onStart();
     }
