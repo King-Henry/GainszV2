@@ -39,7 +39,7 @@ public class RestaurantList extends AppCompatActivity {
             restaurants = new ArrayList<Restaurant>();
             String[] strings = {"McDonald's", "Chick-Fil-a"};
             int[] icons = {R.mipmap.mcdonalds,R.mipmap.chickfila};
-            for(int i = 0; i < icons.length; i++){ 
+            for(int i = 0; i < icons.length; i++){
 
                 Restaurant restaurant = new Restaurant();
                 restaurant.title = strings[i];
